@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 // Auth::routes();
 Route::get('login',[HomeController ::class,'login_admin'])->name('login');
+Route::get('/',[HomeController ::class,'index'])->name('index');
+
 Route::post('login',[HomeController::class,'post_login_admin'])->name('post_login_admin');
 Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');
