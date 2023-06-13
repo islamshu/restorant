@@ -42,6 +42,7 @@ class OrderController extends BaseController
             'email'=>get_general_value('email'),
 
         ];
+        return $this->sendResponse($res,'all response');
     }
 }
 
