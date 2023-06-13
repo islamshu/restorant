@@ -26,4 +26,22 @@ class OrderController extends BaseController
 
 
     }
+    public function all_data(){
+        $res =[
+            'website_title'=>get_general_value('title'),
+            'logo'=>asset('uploads/'.get_general_value('image')),
+            'background'=>asset('uploads/'.get_general_value('background')),
+            'background_watting'=>asset('uploads/'.get_general_value('background_wishlist')),
+            'first_welcom_content'=>get_general_value('welcom_first'),
+            'secand_welcom_content'=>get_general_value('welcom_secand'),
+            'menu_url'=>get_general_value('menu_url'),
+            'phone_number'=>get_general_value('phone_number'),
+            'facebook'=>get_general_value('facebook'),
+            'whatsapp'=>get_general_value('whatsapp'),
+            'instagram'=>get_general_value('instagram'),
+            'email'=>get_general_value('email'),
+
+        ];
+    }
 }
+

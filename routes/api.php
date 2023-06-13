@@ -19,3 +19,4 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 Route::post('/make_order',[OrderController::class,'make_order']);
+Route::gel('/all_data',[OrderController::class,'all_data']);
