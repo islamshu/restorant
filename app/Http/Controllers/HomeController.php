@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     public function index(){
-        return view('dashboard.auth.login');
+        return redirect()->route('dashboard');
     }
     public function login_admin(){
         return view('dashboard.auth.login');
