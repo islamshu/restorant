@@ -29,7 +29,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label>اسم النظام</label>
-                                                <input type="text" name="general[title]" class="form-control ">
+                                                <input type="text" name="general[title]" value="{{ get_general_value('title') }}" class="form-control ">
                                                 
                                             </div>
                                         </div>
