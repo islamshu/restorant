@@ -3,11 +3,41 @@
 namespace App\Http\Controllers;
 
 use App\Models\GeneralInfo;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Rap2hpoutre\FastExcel\FastExcel;
+use Illuminate\Support\Facades\Response;
+
 class HomeController extends Controller
 {
+    public function export(Request $request){
+        $query = Order::query();
+        if($request->status != null){
+            $query->where('status',$request->status);
+        }
+        if($request->table_type != null){
+            $query->where('table_type',$request->table_type);
+        }
+        $orders = $query->orderby('id','desc')->get();
+        $now =  time().'orders.xlsx';
+        (new FastExcel($orders))->export($now, function ($order) {
+            return [
+                'code'=>$order->code,
+                'name'=>$order->name,
+                'phone'=>$order->phone,
+                'note'=>$order->note,
+                'guest'=>$order->guest,
+                'status'=>get_status($order->status),
+                'table_type'=>$order->table_type,
+                'created_at'=>$order->created_at
+            ];
+        });
+        $filePath = public_path($now);
+
+        return response()->download($filePath, 'orders.xlsx');
+    }
     public function index(){
         return redirect()->route('dashboard');
     }
@@ -28,6 +58,7 @@ class HomeController extends Controller
 
     }
     public function profile(){
+        
         $user = auth()->user();
         return view('dashboard.auth.profile')->with('user',$user);
     }

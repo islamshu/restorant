@@ -32,6 +32,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function () {
     Route::get('logout',[HomeController::class,'logout'])->name('logout');
     Route::get('profile',[HomeController::class,'profile'])->name('profile');
     Route::post('update_profile',[HomeController::class,'update_profile'])->name('update_profile');
+    Route::get('export',[HomeController::class,'export'])->name('export');
     
 
     Route::post('add_general', [App\Http\Controllers\HomeController::class, 'add_general'])->name('add_general');
