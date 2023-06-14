@@ -7,7 +7,7 @@
                   @if($item->created_at == $item->updated_at)
                   <span class="timeHandlerLoading" data-time-start="{{ $item->created_at }}"></span>
                   @else
-                  <span class="timeHandlerClosed" data-time-start="{{ $item->created_at }}" data-time-end="{{ $row->updated_at }}"></span>
+                  <span class="timeHandlerClosed" data-time-start="{{ $item->created_at }}" data-time-end="{{ $item->updated_at }}"></span>
                   @endif
                 </td>
                              
