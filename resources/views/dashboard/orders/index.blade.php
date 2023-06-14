@@ -33,6 +33,7 @@
                                             </div>
                                             <div class="modal-body">
                                                 <form method="post" action="{{ route('add_general') }}">
+                                                    @csrf
                                                     <div class="form-group">
                                                         <label for="recipient-name" class="col-form-label">الحالة:</label>
                                                         <select name="general[is_open]" class="form-control" id="">
