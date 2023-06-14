@@ -78,6 +78,10 @@
                                                 <input type="url" name="general[menu]" value="{{ get_general_value('menu') }}" class="form-control"  >
                                             </div>
                                             <div class="col-md-6">
+                                                <label> رابط الموقع على الخريطة          </label>
+                                                <input type="string" name="general[map]" value="{{ get_general_value('map') }}" class="form-control"  >
+                                            </div>
+                                            <div class="col-md-6">
                                                 <label>رقم التواصل   </label>
                                                 <input type="string" name="general[phone_number]" value="{{ get_general_value('phone_number') }}" class="form-control"  >
                                             </div>
@@ -98,6 +102,16 @@
                                             <div class="col-md-6">
                                                 <label> البريد الاكتروني         </label>
                                                 <input type="string" name="general[email]" value="{{ get_general_value('email') }}" class="form-control"  >
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label> يبدأ العمر الساعة           </label>
+                                                <input type="time" name="general[start_at]" value="{{ get_general_value('start_at') }}" class="form-control"  >
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label> ينتهي الساعة          </label>
+                                                <input type="time" name="general[end_at]" value="{{ get_general_value('end_at') }}" class="form-control"  >
                                             </div>
                                         </div>
                                        
