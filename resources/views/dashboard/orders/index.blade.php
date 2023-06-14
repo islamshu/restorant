@@ -163,6 +163,33 @@
             }, 10000);
             }
             fetchdata();
+            function changestatus(id) {
+            var selected_id = 'selected_' + id;
+            var st = $('#' + selected_id).val();
+            $.ajax({
+                url: "{{ route('change_status') }}",
+                type: "GET",
+                data: {
+                    status: st,
+                    order_id: id
+                },
+                success: function(response) {
+                    if (response.status == 1) {
+                        $('#' + selected_id).removeClass("btn-info").addClass("btn-success")
+                    } else if (response.status == 2) {
+                        $('#' + selected_id).removeClass("btn-success").addClass("btn-info")
+
+                    }
+                    else if (response.status == 3) {
+                        $('#' + selected_id).removeClass("btn-info").addClass("btn-danger")
+
+                    }
+                    fetchdata();
+                },
+
+            });
+
+        }
             $('.timeHandlerClosed').each(function() {
                 var startTime = $(this).data('time-start');
                 var endTime = $(this).data('time-end');
@@ -234,33 +261,7 @@
 
         });
 
-        function changestatus(id) {
-            var selected_id = 'selected_' + id;
-            var st = $('#' + selected_id).val();
-            $.ajax({
-                url: "{{ route('change_status') }}",
-                type: "GET",
-                data: {
-                    status: st,
-                    order_id: id
-                },
-                success: function(response) {
-                    if (response.status == 1) {
-                        $('#' + selected_id).removeClass("btn-info").addClass("btn-success")
-                    } else if (response.status == 2) {
-                        $('#' + selected_id).removeClass("btn-success").addClass("btn-info")
-
-                    }
-                    else if (response.status == 3) {
-                        $('#' + selected_id).removeClass("btn-info").addClass("btn-danger")
-
-                    }
-                    fetchdata();
-                },
-
-            });
-
-        }
+        
         // function get_data(st){
         //     $.ajax({
         //             url: "{{ route('refresh') }}",
