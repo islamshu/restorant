@@ -28,7 +28,7 @@ function get_button_status($status){
     }elseif($status == 2){
         return 'info';
     }
-    elseif($status == 2){
+    elseif($status == 3){
         return 'danger';
     }
 }
