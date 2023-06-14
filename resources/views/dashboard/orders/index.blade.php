@@ -20,7 +20,7 @@
                                 <h4 class="card-title">الحجوزات</h4>
                                 {{-- <input type="checkbox" data-id="{{ get_general_value('is_open') }}"class="js-switch"
                                 {{ get_general_value('is_open') == 1 ? 'checked' : '' }}> --}}
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                <div class="modal fade" id="examplelock" tabindex="-1" aria-labelledby="exampleModalLabel"
                                     aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -57,7 +57,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="button" style="float: left" class="btn btn-primary" data-toggle="modal"
+                                <button type="button"  class="btn btn-primary" data-toggle="modal"
                                     data-target="#examplelock">
                                     <i class="fa fa-lock" aria-hidden="true"></i>
 
