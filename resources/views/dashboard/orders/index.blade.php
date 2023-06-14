@@ -141,8 +141,7 @@
 
     <script>
         $(document).ready(function() {
-            function fetchdata() {
-                setInterval(function() {
+            setInterval(function() {
                     var urlParams = new URLSearchParams(window.location.search);
                     var st = urlParams.get('status');
                     $.ajax({
@@ -161,35 +160,8 @@
                         }
                     });
                 }, 10000);
-            }
-            fetchdata();
 
-            function changestatus(id) {
-                var selected_id = 'selected_' + id;
-                var st = $('#' + selected_id).val();
-                $.ajax({
-                    url: "{{ route('change_status') }}",
-                    type: "GET",
-                    data: {
-                        status: st,
-                        order_id: id
-                    },
-                    success: function(response) {
-                        if (response.status == 1) {
-                            $('#' + selected_id).removeClass("btn-info").addClass("btn-success")
-                        } else if (response.status == 2) {
-                            $('#' + selected_id).removeClass("btn-success").addClass("btn-info")
-
-                        } else if (response.status == 3) {
-                            $('#' + selected_id).removeClass("btn-info").addClass("btn-danger")
-
-                        }
-                        fetchdata();
-                    },
-
-                });
-
-            }
+            
             $('.timeHandlerClosed').each(function() {
                 var startTime = $(this).data('time-start');
                 var endTime = $(this).data('time-end');
@@ -260,22 +232,55 @@
             setInterval(orderTimer, 1000);
 
         });
+        function changestatus(id) {
+                var selected_id = 'selected_' + id;
+                var st = $('#' + selected_id).val();
+                $.ajax({
+                    url: "{{ route('change_status') }}",
+                    type: "GET",
+                    data: {
+                        status: st,
+                        order_id: id
+                    },
+                    success: function(response) {
+                        if (response.status == 1) {
+                            $('#' + selected_id).removeClass("btn-info").addClass("btn-success")
+                        } else if (response.status == 2) {
+                            $('#' + selected_id).removeClass("btn-success").addClass("btn-info")
+
+                        } else if (response.status == 3) {
+                            $('#' + selected_id).removeClass("btn-info").addClass("btn-danger")
+
+                        }
+                        fetchdata();
+                    },
+
+                });
+
+        }
+        function fetchdata() {
+                setInterval(function() {
+                    var urlParams = new URLSearchParams(window.location.search);
+                    var st = urlParams.get('status');
+                    $.ajax({
+                        url: "{{ route('refresh') }}",
+                        type: "GET",
+                        data: {
+                            status: st
+                        },
+                        success: function(response) {
+                            // Update the table with the retrieved data
+                            // For example, assuming you have a <table> element with the id "my-table"
+                            $("#my-table").html(response);
+                        },
+                        error: function(xhr) {
+                            console.log(xhr.responseText);
+                        }
+                    });
+                }, 10000);
+            }
 
 
-        // function get_data(st){
-        //     $.ajax({
-        //             url: "{{ route('refresh') }}",
-        //             type: "GET",
-        //             data: { status: st },
-        //             success: function(response) {
-        //                 // Update the table with the retrieved data
-        //                 // For example, assuming you have a <table> element with the id "my-table"
-        //                 $("#my-table").html(response);
-        //             },
-        //             error: function(xhr) {
-        //                 console.log(xhr.responseText);
-        //             }
-        //         });
-        // }
+        
     </script>
 @endsection
