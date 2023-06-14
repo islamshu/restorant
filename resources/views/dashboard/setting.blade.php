@@ -61,10 +61,10 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <label>خلفية صفحة الاغلاق </label>
-                                                <input type="file" name="general_file[background_closed]" class="form-control image3">
+                                                <input type="file" name="general_file[background_closed]" class="form-control image4">
                                                 <div class="form-group">
                                                     <img src="{{ asset('uploads/' . get_general_value('background_closed')) }}"
-                                                        style="width: 100px" class="img-thumbnail image-preview3 " alt="">
+                                                        style="width: 100px" class="img-thumbnail image-preview4 " alt="">
                                                 </div>
                                             </div>
                                         </div>
