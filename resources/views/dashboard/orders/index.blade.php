@@ -37,10 +37,11 @@
                                     @include('dashboard.parts._success')
                                     {{-- <a class="btn btn-success" href="{{ route('booking.create') }}">اضف حجز جديد</a> --}}
                                     <br>
+                                    <a href="{{ route('get_orders') }}?status=2" class="btn btn-info">جديد </a>
+
                                     <a href="{{ route('get_orders') }}?status=" class="btn btn-primary">الكل</a>
 
                                     <a href="{{ route('get_orders') }}?status=1" class="btn btn-success">المنتهية</a>
-                                    <a href="{{ route('get_orders') }}?status=2" class="btn btn-info">في الانتظار</a>
                                     <!-- Button trigger modal -->
                                     <button type="button" style="float: left" class="btn btn-primary" data-toggle="modal"
                                         data-target="#exampleModal">
