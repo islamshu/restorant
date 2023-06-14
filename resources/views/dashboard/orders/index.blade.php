@@ -281,8 +281,25 @@
                     });
                 }, 10000);
             }
+         
 
 
         
     </script>
+       <script>
+        $(".js-switch").change(function() {
+         let status = $(this).prop('checked') === true ? 1 : 0;
+         $.ajax({
+             type: "get",
+             dataType: "json",
+             url: '{{ route('add_general') }}',
+             data: {
+                 'general[is_open]': status,
+             },
+             success: function(data) {
+                 console.log(data.message);
+             }
+         });
+     });
+ </script>
 @endsection
