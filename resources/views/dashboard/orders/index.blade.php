@@ -141,7 +141,8 @@
 
     <script>
         $(document).ready(function() {
-            setInterval(function() {
+            function fetchdata(){
+                setInterval(function() {
                 var urlParams = new URLSearchParams(window.location.search);
                 var st = urlParams.get('status');
                 $.ajax({
@@ -160,6 +161,8 @@
                     }
                 });
             }, 10000);
+            }
+            fetchdata();
             $('.timeHandlerClosed').each(function() {
                 var startTime = $(this).data('time-start');
                 var endTime = $(this).data('time-end');
