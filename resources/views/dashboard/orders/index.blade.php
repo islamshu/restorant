@@ -252,7 +252,7 @@
                         $('#' + selected_id).removeClass("btn-info").addClass("btn-danger")
 
                     }
-                    setInterval();
+                    // setInterval();
                 },
 
             });
