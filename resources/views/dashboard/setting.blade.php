@@ -106,7 +106,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label> يبدأ العمر الساعة           </label>
+                                                <label> يبدأ العمل الساعة           </label>
                                                 <input type="time" name="general[start_at]" value="{{ get_general_value('start_at') }}" class="form-control"  >
                                             </div>
                                             <div class="col-md-6">
