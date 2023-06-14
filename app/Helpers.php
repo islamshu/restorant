@@ -18,12 +18,18 @@ function get_status($status){
     }elseif($status == 2){
         return 'watting';
     }
+    elseif($status == 3){
+        return 'canceld';
+    }
 }
 function get_button_status($status){
     if($status == 1){
         return 'success';
     }elseif($status == 2){
         return 'info';
+    }
+    elseif($status == 2){
+        return 'danger';
     }
 }
 

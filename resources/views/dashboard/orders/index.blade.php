@@ -42,6 +42,8 @@
                                     <a href="{{ route('get_orders') }}?status=" class="btn btn-primary">الكل</a>
 
                                     <a href="{{ route('get_orders') }}?status=1" class="btn btn-success">المنتهية</a>
+                                    <a href="{{ route('get_orders') }}?status=3" class="btn btn-danger">المرفوضة</a>
+
                                     <!-- Button trigger modal -->
                                     <button type="button" style="float: left" class="btn btn-primary" data-toggle="modal"
                                         data-target="#exampleModal">
@@ -70,6 +72,7 @@
                                                                 <option value="" selected></option>
                                                                 <option value="1">قبول</option>
                                                                 <option value="2">انتظار</option>
+                                                                <option value="3">انتظار</option>
 
                                                             </select>
                                                         </div>
@@ -243,6 +246,10 @@
                         $('#' + selected_id).removeClass("btn-info").addClass("btn-success")
                     } else if (response.status == 2) {
                         $('#' + selected_id).removeClass("btn-success").addClass("btn-info")
+
+                    }
+                    else if (response.status == 3) {
+                        $('#' + selected_id).removeClass("btn-info").addClass("btn-danger")
 
                     }
                 },
