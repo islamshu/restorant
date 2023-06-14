@@ -294,7 +294,7 @@
              dataType: "json",
              url: '{{ route('add_general') }}',
              data: {
-                "{{ csrf_token() }}",
+                "_token": "{{ csrf_token() }}",
                  'general[is_open]': status,
              },
              success: function(data) {
