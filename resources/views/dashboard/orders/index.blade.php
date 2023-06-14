@@ -171,6 +171,7 @@
                     var startTime = $(this).data('time-start');
                     var diff = new Date(startTime);
                     var current = new Date();
+                    alert(current);
 
                     $(this).html(calculateTimeDifference(diff, current));
                 });
