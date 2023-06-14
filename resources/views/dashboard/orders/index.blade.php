@@ -67,19 +67,19 @@
                                                                 class="col-form-label">الحالة:</label>
                                                             <select name="status" class="form-control" id="">
                                                                 <option value="" selected></option>
-                                                                <option value="1">done</option>
-                                                                <option value="2">watting</option>
+                                                                <option value="1">قبول</option>
+                                                                <option value="2">انتظار</option>
 
                                                             </select>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="recipient-name" class="col-form-label">نواع
-                                                                الطاولة:</label>
+                                                            <label for="recipient-name" class="col-form-label">المكان
+                                                                 </label>
                                                             <select name="table_type" class="form-control" id="">
                                                                 <option value="" selected></option>
-                                                                <option value="Public">Public</option>
-                                                                <option value="External">External</option>
-                                                                <option value="Internal">Internal</option>
+                                                                <option value="Public">عام</option>
+                                                                <option value="External">خارجي</option>
+                                                                <option value="Internal">داخلي</option>
 
                                                             </select>
 
