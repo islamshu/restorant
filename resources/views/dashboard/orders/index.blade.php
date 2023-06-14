@@ -18,6 +18,8 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">الحجوزات</h4>
+                                <input type="checkbox" data-id="{{ get_general_value('is_open') }}"class="js-switch"
+                                {{ get_general_value('is_open') == 1 ? 'checked' : '' }}>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
