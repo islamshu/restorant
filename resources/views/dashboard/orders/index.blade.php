@@ -42,49 +42,55 @@
                                     <a href="{{ route('get_orders') }}?status=1" class="btn btn-success">المنتهية</a>
                                     <a href="{{ route('get_orders') }}?status=2" class="btn btn-info">في الانتظار</a>
                                     <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    <i class="fa fa-print"></i>
-</button>
+                                    <button type="button" style="float: left" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#exampleModal">
+                                        <i class="fa fa-file-excel-o" aria-hidden="true"></i>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">تصدير اكسيل</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form method="get" action="{{ route('export') }}">
-            <div class="form-group">
-              <label for="recipient-name" class="col-form-label">الحالة:</label>
-              <select name="status" class="form-control" id="">
-                <option value="" selected ></option>
-                <option value="1">done</option>
-                <option value="2">watting</option>
+                                    </button>
 
-              </select>
-            </div>
-            <div class="form-group">
-                <label for="recipient-name" class="col-form-label">نواع الطاولة:</label>
-                <select name="table_type" class="form-control" id="">
-                  <option value="" selected ></option>
-                  <option value="Public">Public</option>
-                  <option value="External">External</option>
-                  <option value="Internal">Internal</option>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">تصدير اكسيل</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form method="get" action="{{ route('export') }}">
+                                                        <div class="form-group">
+                                                            <label for="recipient-name"
+                                                                class="col-form-label">الحالة:</label>
+                                                            <select name="status" class="form-control" id="">
+                                                                <option value="" selected></option>
+                                                                <option value="1">done</option>
+                                                                <option value="2">watting</option>
 
-                </select>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="recipient-name" class="col-form-label">نواع
+                                                                الطاولة:</label>
+                                                            <select name="table_type" class="form-control" id="">
+                                                                <option value="" selected></option>
+                                                                <option value="Public">Public</option>
+                                                                <option value="External">External</option>
+                                                                <option value="Internal">Internal</option>
 
-              </div>
-              <button type="submit" class="btn btn-info">ارسال</button>
-            </form>
-      </div>
-    
-    </div>
-  </div>
-</div>
+                                                            </select>
+
+                                                        </div>
+                                                        <button type="submit" class="btn btn-info">ارسال</button>
+                                                    </form>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <table
                                         class="table table-striped table-bordered zero-configuration table_calss tablestyle">

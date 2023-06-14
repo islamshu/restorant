@@ -87,8 +87,14 @@ class HomeController extends Controller
         auth()->logout();
         return redirect()->route('login');
     }
-    public function dashboard(){
-        return view('dashboard.index');
+    public function dashboard(Request $request){
+        $query = Order::query();
+        if($request->status != null){
+            $query->where('status',$request->status);
+        }
+        $orders =$query->orderby('id','desc')->get(); // Replace with your actual logic to fetch the updated content
+
+        return view('dashboard.orders.index', compact('orders'))->render();
     }
     public function setting(){
         return view('dashboard.setting');
