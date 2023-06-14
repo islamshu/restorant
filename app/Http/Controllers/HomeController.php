@@ -30,7 +30,7 @@ class HomeController extends Controller
                 'note'=>$order->note,
                 'guest'=>$order->guest,
                 'status'=>get_status($order->status),
-                'table_type'=>$order->table_type,
+                'table type'=>$order->table_type,
                 'created_at'=>$order->created_at
             ];
         });
