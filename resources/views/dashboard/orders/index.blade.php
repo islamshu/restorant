@@ -175,8 +175,8 @@
                     var local = d.getTime();
                     var offset = d.getTimezoneOffset() * (60 * 1000);
                     var utc = new Date(local + offset);
-                    var current = new Date(utc.getTime() + (3 * 60 * 60 * 1000));
-                                        alert(current);
+                    var current = new Date(utc.getTime() + (1 * 60 * 60 * 1000));
+                    alert(current);
 
                     $(this).html(calculateTimeDifference(diff, current));
                 });
