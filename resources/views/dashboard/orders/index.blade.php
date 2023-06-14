@@ -72,7 +72,7 @@
                                                                 <option value="" selected></option>
                                                                 <option value="1">قبول</option>
                                                                 <option value="2">انتظار</option>
-                                                                <option value="3">انتظار</option>
+                                                                <option value="3">مرفوضة</option>
 
                                                             </select>
                                                         </div>

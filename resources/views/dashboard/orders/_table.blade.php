@@ -18,8 +18,10 @@
                   </td>
                   <td>
                     <select class="form-control btn btn-{{ get_button_status($item->status) }}" id="selected_{{ $item->id }}" onchange="changestatus({{ $item->id }})">
-                        <option value="2" @if($item->status == 2) selected @endif>Watting</option>
-                        <option value="1" @if($item->status == 1) selected @endif>Done</option>
+                        <option value="2" @if($item->status == 2) selected @endif>انتظار</option>
+                        <option value="1" @if($item->status == 1) selected @endif>منتهية</option>
+                        <option value="3"@if($item->status == 3) selected @endif>مرفوضة</option>
+
                     </select>
                     {{-- <button class="btn btn-{{get_button_status($item->status)  }}" selected>{{ get_status($item->status) }}</button>   --}}
                   </td>
