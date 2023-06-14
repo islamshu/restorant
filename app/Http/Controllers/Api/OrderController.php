@@ -43,6 +43,7 @@ class OrderController extends BaseController
             'email'=>get_general_value('email'),
             'start_at'=>get_general_value('start_at'),
             'end_at'=>get_general_value('end_at'),
+            'background_closed'=>get_general_value('background_closed')
         ];
         return $this->sendResponse($res,'all response');
     }

@@ -36,7 +36,7 @@
                                         <br>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>صورة الموقع</label>
+                                                <label>لوجو الموقع</label>
                                                 <input type="file" name="general_file[image]" class="form-control image">
                                                 <div class="form-group">
                                                     <img src="{{ asset('uploads/' . get_general_value('image')) }}"
@@ -44,7 +44,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <label>خلفية الموقع</label>
+                                                <label>خلفية الموقع الرئيسية</label>
                                                 <input type="file" name="general_file[background]" class="form-control image2">
                                                 <div class="form-group">
                                                     <img src="{{ asset('uploads/' . get_general_value('background')) }}"
@@ -56,6 +56,14 @@
                                                 <input type="file" name="general_file[background_wishlist]" class="form-control image3">
                                                 <div class="form-group">
                                                     <img src="{{ asset('uploads/' . get_general_value('background_wishlist')) }}"
+                                                        style="width: 100px" class="img-thumbnail image-preview3 " alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>خلفية صفحة الاغلاق </label>
+                                                <input type="file" name="general_file[background_closed]" class="form-control image3">
+                                                <div class="form-group">
+                                                    <img src="{{ asset('uploads/' . get_general_value('background_closed')) }}"
                                                         style="width: 100px" class="img-thumbnail image-preview3 " alt="">
                                                 </div>
                                             </div>
