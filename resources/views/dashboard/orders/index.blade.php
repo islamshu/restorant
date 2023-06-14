@@ -290,10 +290,11 @@
         $(".js-switch").change(function() {
          let status = $(this).prop('checked') === true ? 1 : 0;
          $.ajax({
-             type: "get",
+             type: "post",
              dataType: "json",
              url: '{{ route('add_general') }}',
              data: {
+                "{{ csrf_token() }}",
                  'general[is_open]': status,
              },
              success: function(data) {
