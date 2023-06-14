@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Response;
 class HomeController extends Controller
 {
     public function export(Request $request){
-        dd($request);
         $query = Order::query();
         if($request->status != null){
             $query->where('status',$request->status);
