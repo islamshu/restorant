@@ -18,8 +18,50 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">الحجوزات</h4>
-                                <input type="checkbox" data-id="{{ get_general_value('is_open') }}"class="js-switch"
-                                {{ get_general_value('is_open') == 1 ? 'checked' : '' }}>
+                                {{-- <input type="checkbox" data-id="{{ get_general_value('is_open') }}"class="js-switch"
+                                {{ get_general_value('is_open') == 1 ? 'checked' : '' }}> --}}
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">اغلاق الحجوزات </h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method="post" action="{{ route('add_general') }}">
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="col-form-label">الحالة:</label>
+                                                        <select name="general[is_open]" class="form-control" id="">
+                                                            <option value="" selected></option>
+                                                            <option value="0"  @if(get_general_value('is_open') == 0 ) selected @endif>مغلق</option>
+                                                            <option value="1" @if(get_general_value('is_open') == 1 ) selected @endif>مفتوح</option>
+
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="col-form-label">الرسالة عند الاغلاق
+                                                        </label>
+                                                        <textarea name="general[close_message]" class="form-control" id="" cols="30" rows="3">
+                                                            {{ get_general_value('close_message') }}
+                                                        </textarea>
+
+                                                    </div>
+                                                    <button type="submit" class="btn btn-info">ارسال</button>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" style="float: left" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#examplelock">
+                                    <i class="fa fa-lock" aria-hidden="true"></i>
+
+                                </button>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
@@ -81,7 +123,8 @@
                                                         <div class="form-group">
                                                             <label for="recipient-name" class="col-form-label">المكان
                                                             </label>
-                                                            <select name="table_type" class="form-control" id="">
+                                                            <select name="table_type" class="form-control"
+                                                                id="">
                                                                 <option value="" selected></option>
                                                                 <option value="Public">عام</option>
                                                                 <option value="External">خارجي</option>
@@ -144,26 +187,26 @@
     <script>
         $(document).ready(function() {
             setInterval(function() {
-                    var urlParams = new URLSearchParams(window.location.search);
-                    var st = urlParams.get('status');
-                    $.ajax({
-                        url: "{{ route('refresh') }}",
-                        type: "GET",
-                        data: {
-                            status: st
-                        },
-                        success: function(response) {
-                            // Update the table with the retrieved data
-                            // For example, assuming you have a <table> element with the id "my-table"
-                            $("#my-table").html(response);
-                        },
-                        error: function(xhr) {
-                            console.log(xhr.responseText);
-                        }
-                    });
-                }, 10000);
+                var urlParams = new URLSearchParams(window.location.search);
+                var st = urlParams.get('status');
+                $.ajax({
+                    url: "{{ route('refresh') }}",
+                    type: "GET",
+                    data: {
+                        status: st
+                    },
+                    success: function(response) {
+                        // Update the table with the retrieved data
+                        // For example, assuming you have a <table> element with the id "my-table"
+                        $("#my-table").html(response);
+                    },
+                    error: function(xhr) {
+                        console.log(xhr.responseText);
+                    }
+                });
+            }, 10000);
 
-            
+
             $('.timeHandlerClosed').each(function() {
                 var startTime = $(this).data('time-start');
                 var endTime = $(this).data('time-end');
@@ -234,73 +277,71 @@
             setInterval(orderTimer, 1000);
 
         });
+
         function changestatus(id) {
-                var selected_id = 'selected_' + id;
-                var st = $('#' + selected_id).val();
-                $.ajax({
-                    url: "{{ route('change_status') }}",
-                    type: "GET",
-                    data: {
-                        status: st,
-                        order_id: id
-                    },
-                    success: function(response) {
-                        if (response.status == 1) {
-                            $('#' + selected_id).removeClass("btn-info").addClass("btn-success")
-                        } else if (response.status == 2) {
-                            $('#' + selected_id).removeClass("btn-success").addClass("btn-info")
+            var selected_id = 'selected_' + id;
+            var st = $('#' + selected_id).val();
+            $.ajax({
+                url: "{{ route('change_status') }}",
+                type: "GET",
+                data: {
+                    status: st,
+                    order_id: id
+                },
+                success: function(response) {
+                    if (response.status == 1) {
+                        $('#' + selected_id).removeClass("btn-info").addClass("btn-success")
+                    } else if (response.status == 2) {
+                        $('#' + selected_id).removeClass("btn-success").addClass("btn-info")
 
-                        } else if (response.status == 3) {
-                            $('#' + selected_id).removeClass("btn-info").addClass("btn-danger")
+                    } else if (response.status == 3) {
+                        $('#' + selected_id).removeClass("btn-info").addClass("btn-danger")
 
-                        }
-                        fetchdata();
-                    },
+                    }
+                    fetchdata();
+                },
 
-                });
+            });
 
         }
+
         function fetchdata() {
-                setInterval(function() {
-                    var urlParams = new URLSearchParams(window.location.search);
-                    var st = urlParams.get('status');
-                    $.ajax({
-                        url: "{{ route('refresh') }}",
-                        type: "GET",
-                        data: {
-                            status: st
-                        },
-                        success: function(response) {
-                            // Update the table with the retrieved data
-                            // For example, assuming you have a <table> element with the id "my-table"
-                            $("#my-table").html(response);
-                        },
-                        error: function(xhr) {
-                            console.log(xhr.responseText);
-                        }
-                    });
-                }, 10000);
-            }
-         
-
-
-        
+            setInterval(function() {
+                var urlParams = new URLSearchParams(window.location.search);
+                var st = urlParams.get('status');
+                $.ajax({
+                    url: "{{ route('refresh') }}",
+                    type: "GET",
+                    data: {
+                        status: st
+                    },
+                    success: function(response) {
+                        // Update the table with the retrieved data
+                        // For example, assuming you have a <table> element with the id "my-table"
+                        $("#my-table").html(response);
+                    },
+                    error: function(xhr) {
+                        console.log(xhr.responseText);
+                    }
+                });
+            }, 10000);
+        }
     </script>
-       <script>
+    <script>
         $(".js-switch").change(function() {
-         let status = $(this).prop('checked') === true ? 1 : 0;
-         $.ajax({
-             type: "post",
-             dataType: "json",
-             url: '{{ route('add_general') }}',
-             data: {
-                "_token": "{{ csrf_token() }}",
-                 'general[is_open]': status,
-             },
-             success: function(data) {
-                 console.log(data.message);
-             }
-         });
-     });
- </script>
+            let status = $(this).prop('checked') === true ? 1 : 0;
+            $.ajax({
+                type: "post",
+                dataType: "json",
+                url: '{{ route('add_general') }}',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    'general[is_open]': status,
+                },
+                success: function(data) {
+                    console.log(data.message);
+                }
+            });
+        });
+    </script>
 @endsection
