@@ -45,9 +45,7 @@
                                                     <div class="form-group">
                                                         <label for="recipient-name" class="col-form-label">الرسالة عند الاغلاق
                                                         </label>
-                                                        <textarea name="general[close_message]" class="form-control" id="" cols="30" rows="3">
-                                                            {{ get_general_value('close_message') }}
-                                                        </textarea>
+                                                        <textarea name="general[close_message]" class="form-control" id="" cols="30" rows="3">{{ get_general_value('close_message') }}</textarea>
 
                                                     </div>
                                                     <button type="submit" class="btn btn-info">ارسال</button>
