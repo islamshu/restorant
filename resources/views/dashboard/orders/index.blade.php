@@ -38,13 +38,18 @@
                                                         <label for="recipient-name" class="col-form-label">الحالة:</label>
                                                         <select name="general[is_open]" class="form-control" id="">
                                                             <option value="" selected></option>
-                                                            <option value="0"  @if(get_general_value('is_open') == 0 ) selected @endif>مغلق</option>
-                                                            <option value="1" @if(get_general_value('is_open') == 1 ) selected @endif>مفتوح</option>
+                                                            <option value="0"
+                                                                @if (get_general_value('is_open') == 0) selected @endif>مغلق
+                                                            </option>
+                                                            <option value="1"
+                                                                @if (get_general_value('is_open') == 1) selected @endif>مفتوح
+                                                            </option>
 
                                                         </select>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="recipient-name" class="col-form-label">الرسالة عند الاغلاق
+                                                        <label for="recipient-name" class="col-form-label">الرسالة عند
+                                                            الاغلاق
                                                         </label>
                                                         <textarea name="general[close_message]" class="form-control" id="" cols="30" rows="3">{{ get_general_value('close_message') }}</textarea>
 
@@ -56,7 +61,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="button"  class="btn btn-primary" data-toggle="modal"
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
                                     data-target="#examplelock">
                                     <i class="fa fa-lock" aria-hidden="true"></i>
 
@@ -175,16 +180,25 @@
                     </div>
                 </div>
             </section>
+            <div class="notifications_sounds">
+            </div>
+            <audio id="audioPlayer" src="https://dashboard.yalago.net/noti/notiSound.mp3"></audio>
 
+     
         </div>
 
     </div>
 @endsection
 @section('script')
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+
     {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 
     <script>
         $(document).ready(function() {
+       
             setInterval(function() {
                 var urlParams = new URLSearchParams(window.location.search);
                 var st = urlParams.get('status');
@@ -341,6 +355,34 @@
                     console.log(data.message);
                 }
             });
+        });
+    </script>
+    <script>
+        // Initialize Pusher
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('ecfcb8c328a3a23a2978', {
+            cluster: 'ap2'
+        });
+    </script>
+    <script>
+        // Subscribe to the channel
+        const channel = pusher.subscribe('notifications');
+
+        channel.bind('new-notification', function() {
+            var audioPlayer = document.getElementById('audioPlayer');
+      
+      // Check if the browser can play audio without user interaction
+      var playPromise = audioPlayer.play();
+
+      if (playPromise !== undefined) {
+        playPromise.then(function() {
+          // Autoplay started successfully
+        }).catch(function(error) {
+          // Autoplay was prevented, handle error or show a UI element to allow user interaction
+          console.log('Autoplay prevented:', error);
+        });
+      }
         });
     </script>
 @endsection

@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
 use App\Http\Resources\OrderResource;
 use App\Models\Order;
+use App\Models\User;
+use App\Notifications\OrderAdded;
+use Illuminate\Support\Facades\Notification;
+use Pusher\Pusher;
 
 class OrderController extends BaseController
 {
@@ -22,6 +26,21 @@ class OrderController extends BaseController
         $order->status = 2;
         $order->save();
         $res = new OrderResource($order);
+        $user = User::first();
+        $pusher = new Pusher('ecfcb8c328a3a23a2978', '6f6d4e2b81650b704aba', '1534721', [
+            'cluster' => 'ap2',
+            'useTLS' => true
+        ]);
+        $date_send = [
+            'id' => $order->id,
+            
+        ];
+        $pusher->trigger('notifications', 'new-notification', $date_send);
+       
+        $notification = new OrderAdded($order);
+        Notification::send($user, $notification);
+
+        // return response()->json(['message' => 'Item added to cart']);
         return $this->sendResponse($res,'تم ارسال الطلب بنجاح');
 
 
