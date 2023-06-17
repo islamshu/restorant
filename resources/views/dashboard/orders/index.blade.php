@@ -34,19 +34,7 @@
                                             <div class="modal-body">
                                                 <form method="post" action="{{ route('add_general') }}">
                                                     @csrf
-                                                    <div class="form-group">
-                                                        <label for="recipient-name" class="col-form-label">الحالة:</label>
-                                                        <select name="general[is_open]" class="form-control" id="">
-                                                            <option value="" selected></option>
-                                                            <option value="0"
-                                                                @if (get_general_value('is_open') == 0) selected @endif>مغلق
-                                                            </option>
-                                                            <option value="1"
-                                                                @if (get_general_value('is_open') == 1) selected @endif>مفتوح
-                                                            </option>
-
-                                                        </select>
-                                                    </div>
+                                                    
                                                     <div class="form-group">
                                                         <label for="recipient-name" class="col-form-label">الرسالة عند
                                                             الاغلاق
@@ -61,6 +49,8 @@
                                         </div>
                                     </div>
                                 </div>
+                                <input type="checkbox" data-id="{{ get_general_value('is_open') }}"class="js-switch"
+                                {{ get_general_value('is_open') == 1 ? 'checked' : '' }}>
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                     data-target="#examplelock">
                                     <i class="fa fa-lock" aria-hidden="true"></i>
@@ -355,6 +345,10 @@
                     console.log(data.message);
                 }
             });
+            if(status == 0){
+                $('#examplelock').modal('show');
+
+            }
         });
     </script>
     <script>
