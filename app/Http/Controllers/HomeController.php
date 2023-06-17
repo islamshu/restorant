@@ -53,7 +53,9 @@ class HomeController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/dashboard');
+            $url = route('orders').'?status=2';
+            return redirect()->route($url);
+            // return redirect()->intended('/dashboard');
         }
         return redirect()->back()->with(['error'=>'البريد الاكتروني او كلمة المرور غير صحيحة']);
 
