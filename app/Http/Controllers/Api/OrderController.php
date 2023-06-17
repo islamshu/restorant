@@ -53,7 +53,7 @@ class OrderController extends BaseController
             'background_watting'=>asset('uploads/'.get_general_value('background_wishlist')),
             'first_welcom_content'=>get_general_value('welcom_first'),
             'secand_welcom_content'=>get_general_value('welcom_secand'),
-            'menu_url'=>get_general_value('menu_url'),
+            'menu_url'=>get_general_value('menu'),
             'map'=>get_general_value('map'),
             'phone_number'=>get_general_value('phone_number'),
             'facebook'=>get_general_value('facebook'),
