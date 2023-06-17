@@ -39,7 +39,8 @@ class HomeController extends Controller
         return response()->download($filePath, 'orders.xlsx');
     }
     public function index(){
-        return redirect()->route('get_orders'.'?status=2');
+        $url = route('orders').'?status=2';
+        return redirect()->route($url);
     }
     public function login_admin(){
         return view('dashboard.auth.login');
