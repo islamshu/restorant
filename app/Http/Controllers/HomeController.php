@@ -97,7 +97,7 @@ class HomeController extends Controller
         }
         $orders =$query->orderby('id','desc')->get(); // Replace with your actual logic to fetch the updated content
 
-        return view('dashboard.orders.index', compact('orders'))->render();
+        return view('dashboard.orders.index', compact('orders','request'))->render();
     }
     public function setting(){
         return view('dashboard.setting');

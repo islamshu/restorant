@@ -81,7 +81,14 @@
 
                                     <a href="{{ route('get_orders') }}?status=1" class="btn btn-success">المنتهية</a>
                                     <a href="{{ route('get_orders') }}?status=3" class="btn btn-danger">المرفوضة</a>
-
+                                    <form action="" style="display: inline-flex">
+                                    <div class="form-group">
+                                    <input type="hidden" value="{{ $request->status }}" name="status" id="">
+                                    <input type="date" name="from" class="class-control" value="{{ $request->from }}" >
+                                    <input type="date" name="to" class="class-control" value="{{ $request->to }}" >
+                                    <input type="submit" value="فلتر">
+                                    </div>
+                                </form>
                                     <!-- Button trigger modal -->
                                     <button type="button" style="float: left" class="btn btn-primary" data-toggle="modal"
                                         data-target="#exampleModal">
@@ -189,25 +196,7 @@
     <script>
         $(document).ready(function() {
 
-            setInterval(function() {
-                var urlParams = new URLSearchParams(window.location.search);
-                var st = urlParams.get('status');
-                $.ajax({
-                    url: "{{ route('refresh') }}",
-                    type: "GET",
-                    data: {
-                        status: st
-                    },
-                    success: function(response) {
-                        // Update the table with the retrieved data
-                        // For example, assuming you have a <table> element with the id "my-table"
-                        $("#my-table").html(response);
-                    },
-                    error: function(xhr) {
-                        console.log(xhr.responseText);
-                    }
-                });
-            }, 10000);
+            
 
 
             $('.timeHandlerClosed').each(function() {
@@ -309,7 +298,7 @@
         }
 
         function fetchdata() {
-            setInterval(function() {
+            // setInterval(function() {
                 var urlParams = new URLSearchParams(window.location.search);
                 var st = urlParams.get('status');
                 $.ajax({
@@ -327,7 +316,7 @@
                         console.log(xhr.responseText);
                     }
                 });
-            }, 10000);
+            // }, 10000);
         }
     </script>
     <script>
@@ -368,6 +357,26 @@
 
             // Check if the browser can play audio without user interaction
             var playPromise = audioPlayer.play();
+
+            // setInterval(function() {??/
+                var urlParams = new URLSearchParams(window.location.search);
+                var st = urlParams.get('status');
+                $.ajax({
+                    url: "{{ route('refresh') }}",
+                    type: "GET",
+                    data: {
+                        status: st
+                    },
+                    success: function(response) {
+                        // Update the table with the retrieved data
+                        // For example, assuming you have a <table> element with the id "my-table"
+                        $("#my-table").html(response);
+                    },
+                    error: function(xhr) {
+                        console.log(xhr.responseText);
+                    }
+                });
+            // }, 10000);
 
             if (playPromise !== undefined) {
                 playPromise.then(function() {
