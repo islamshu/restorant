@@ -99,8 +99,10 @@
 <body class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click"
     data-menu="vertical-menu" data-col="2-columns">
     <!-- fixed-top-->
+    
     @include('dashboard.parts.nav')
-
+    <div style="text-align: center">
+    </div>
 
     @include('dashboard.parts.aside')
 

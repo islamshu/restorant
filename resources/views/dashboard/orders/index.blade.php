@@ -11,6 +11,7 @@
 @endsection
 @section('content')
     <div class="content-wrapper">
+        
         <div class="content-body">
             <section id="configuration">
                 <div class="row">
