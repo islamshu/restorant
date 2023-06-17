@@ -8,7 +8,7 @@
                     <span class="menu-title"> الاعدادات  </span></a>
             </li>
             <li class="nav-item  ">
-                <a href="{{ route('get_orders') }}?status=">
+                <a href="{{ route('get_orders') }}?status=2">
                     <i class="fa fa-list"></i>
                     <span class="menu-title"> الحجوزات  </span></a>
             </li>
