@@ -11,7 +11,7 @@
 @endsection
 @section('content')
     <div class="content-wrapper">
-        
+
         <div class="content-body">
             <section id="configuration">
                 <div class="row">
@@ -35,7 +35,7 @@
                                             <div class="modal-body">
                                                 <form method="post" action="{{ route('add_general') }}">
                                                     @csrf
-                                                    
+
                                                     <div class="form-group">
                                                         <label for="recipient-name" class="col-form-label">الرسالة عند
                                                             الاغلاق
@@ -51,8 +51,8 @@
                                     </div>
                                 </div>
                                 <input type="checkbox" data-id="{{ get_general_value('is_open') }}"class="js-switch"
-                                {{ get_general_value('is_open') == 1 ? 'checked' : '' }}>
-                                
+                                    {{ get_general_value('is_open') == 1 ? 'checked' : '' }}>
+
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
@@ -70,6 +70,9 @@
 
                                     @include('dashboard.parts._error')
                                     @include('dashboard.parts._success')
+                                    <div style="text-align: center">
+                                        <img width="100" height="100" src={{ asset('backend/watitng-list.png') }}>
+                                    </div>
                                     {{-- <a class="btn btn-success" href="{{ route('booking.create') }}">اضف حجز جديد</a> --}}
                                     <br>
                                     <a href="{{ route('get_orders') }}?status=2" class="btn btn-info">جديد </a>
@@ -171,7 +174,7 @@
             </div>
             <audio id="audioPlayer" src="https://dashboard.yalago.net/noti/notiSound.mp3"></audio>
 
-     
+
         </div>
 
     </div>
@@ -185,7 +188,7 @@
 
     <script>
         $(document).ready(function() {
-       
+
             setInterval(function() {
                 var urlParams = new URLSearchParams(window.location.search);
                 var st = urlParams.get('status');
@@ -342,7 +345,7 @@
                     console.log(data.message);
                 }
             });
-            if(status == 0){
+            if (status == 0) {
                 $('#examplelock').modal('show');
 
             }
@@ -362,18 +365,18 @@
 
         channel.bind('new-notification', function() {
             var audioPlayer = document.getElementById('audioPlayer');
-      
-      // Check if the browser can play audio without user interaction
-      var playPromise = audioPlayer.play();
 
-      if (playPromise !== undefined) {
-        playPromise.then(function() {
-          // Autoplay started successfully
-        }).catch(function(error) {
-          // Autoplay was prevented, handle error or show a UI element to allow user interaction
-          console.log('Autoplay prevented:', error);
-        });
-      }
+            // Check if the browser can play audio without user interaction
+            var playPromise = audioPlayer.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(function() {
+                    // Autoplay started successfully
+                }).catch(function(error) {
+                    // Autoplay was prevented, handle error or show a UI element to allow user interaction
+                    console.log('Autoplay prevented:', error);
+                });
+            }
         });
     </script>
 @endsection

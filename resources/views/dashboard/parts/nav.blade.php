@@ -25,10 +25,7 @@
                 <ul class="nav navbar-nav mr-auto float-left">
                     <li class="nav-item d-none d-md-block"><a class="nav-link nav-menu-main menu-toggle hidden-xs"
                             href="#"><i class="ft-menu"></i></a></li>
-                            <li class="nav-item d-none d-md-block">
-                                <img width="70" height="70" src={{ asset('backend/watitng-list.png') }}>
-
-                            </li>
+                            
 
 
                 </ul>
