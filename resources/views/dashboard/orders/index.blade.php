@@ -86,7 +86,7 @@
                                     <input type="hidden" value="{{ $request->status }}" name="status" id="">
                                     <input type="date" name="from" class="class-control" value="{{ $request->from }}" >
                                     <input type="date" name="to" class="class-control" value="{{ $request->to }}" >
-                                    <input type="submit" value="فلتر">
+                                    <input type="submit" class="btn btn-success" value="فلتر">
                                     </div>
                                 </form>
                                     <!-- Button trigger modal -->
