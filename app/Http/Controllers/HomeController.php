@@ -39,7 +39,7 @@ class HomeController extends Controller
         return response()->download($filePath, 'orders.xlsx');
     }
     public function index(){
-        $url = route('orders').'?status=2';
+        $url = route('get_orders').'?status=2';
         return redirect()->route($url);
     }
     public function login_admin(){
@@ -53,7 +53,7 @@ class HomeController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            $url = route('orders').'?status=2';
+            $url = route('get_orders').'?status=2';
             return redirect()->route($url);
             // return redirect()->intended('/dashboard');
         }
