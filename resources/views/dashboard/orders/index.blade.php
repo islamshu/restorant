@@ -39,7 +39,7 @@
                                                         <label for="recipient-name" class="col-form-label">الرسالة عند
                                                             الاغلاق
                                                         </label>
-                                                        <textarea name="general[close_message]" class="form-control" id="" cols="30" rows="3">{{ get_general_value('close_message') }}</textarea>
+                                                        <textarea name="general[close_message]" class="form-control ckeditor" id="" cols="30" rows="3">{{ get_general_value('close_message') }}</textarea>
 
                                                     </div>
                                                     <button type="submit" class="btn btn-info">ارسال</button>
@@ -51,11 +51,7 @@
                                 </div>
                                 <input type="checkbox" data-id="{{ get_general_value('is_open') }}"class="js-switch"
                                 {{ get_general_value('is_open') == 1 ? 'checked' : '' }}>
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#examplelock">
-                                    <i class="fa fa-lock" aria-hidden="true"></i>
-
-                                </button>
+                                
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">

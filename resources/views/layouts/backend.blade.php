@@ -129,16 +129,9 @@
 
     <script src="{{ asset('backend/slidersc.js') }}" type="text/javascript"></script>
     <script>
-        tinymce.init({
-          selector: '.ckeditor',
-          
-          setup: function (editor) {
-        editor.on('change', function () {
-            tinymce.triggerSave();
-        });
-    }
-        });
-      </script>
+        CKEDITOR.replaceClass="ckeditor";
+
+    </script>
       
 
 
@@ -150,7 +143,7 @@
         integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
-    {{-- <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script> --}}
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     {{-- <script src="{{ asset('backend/css/chat.js') }}"></script> --}}
