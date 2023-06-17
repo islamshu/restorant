@@ -40,7 +40,7 @@ class HomeController extends Controller
     }
     public function index(){
         $url = route('get_orders').'?status=2';
-        return redirect()->route($url);
+        return redirect($url);
     }
     public function login_admin(){
         return view('dashboard.auth.login');
@@ -54,7 +54,7 @@ class HomeController extends Controller
 
         if (Auth::attempt($credentials)) {
             $url = route('get_orders').'?status=2';
-            return redirect()->route($url);
+            return redirect($url);
             // return redirect()->intended('/dashboard');
         }
         return redirect()->back()->with(['error'=>'البريد الاكتروني او كلمة المرور غير صحيحة']);
