@@ -22,7 +22,7 @@
                   <td>
                     <select class="form-control btn btn-{{ get_button_status($item->status) }}" id="selected_{{ $item->id }}" onchange="changestatus({{ $item->id }})">
                         <option value="2" @if($item->status == 2) selected @endif>انتظار</option>
-                        <option value="1" @if($item->status == 1) selected @endif>منتهية</option>
+                        <option value="1" @if($item->status == 1) selected @endif>مقبولة</option>
                         <option value="3"@if($item->status == 3) selected @endif>مرفوضة</option>
 
                     </select>

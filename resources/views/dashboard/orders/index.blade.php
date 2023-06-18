@@ -79,7 +79,7 @@
 
                                     <a href="{{ route('get_orders') }}?status=" class="btn btn-primary">الكل</a>
 
-                                    <a href="{{ route('get_orders') }}?status=1" class="btn btn-success">المنتهية</a>
+                                    <a href="{{ route('get_orders') }}?status=1" class="btn btn-success">المقبولة</a>
                                     <a href="{{ route('get_orders') }}?status=3" class="btn btn-danger">المرفوضة</a>
                                     <form action="" style="display: inline-flex">
                                     <div class="form-group">
