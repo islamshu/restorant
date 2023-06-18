@@ -95,8 +95,22 @@ class HomeController extends Controller
         if($request->status != null){
             $query->where('status',$request->status);
         }
-        $orders =$query->orderby('id','desc')->get(); // Replace with your actual logic to fetch the updated content
+        if($request->from != null  || $request->to != null ){
 
+            if($request->from != null  && $request->from != null && $request->from != $request->to){
+                $query->whereBetween('created_at', [$request->from, $request->to]);
+            }elseif($request->from != null  && $request->from == null){
+
+                $query->whereBetween('created_at', [$request->from, now()]);
+            }elseif($request->from == $request->to){
+
+                $query->whereBetween('created_at', [$request->from . ' 00:00:00', $request->to. ' 23:59:59']);
+            }
+        }else{
+            $query->where('is_clear',1);
+        }
+        
+        $orders =$query->orderby('id','desc')->get();
         return view('dashboard.orders.index', compact('orders','request'))->render();
     }
     public function setting(){
