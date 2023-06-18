@@ -214,13 +214,13 @@
                     var startTime = $(this).data('time-start');
                     var diff = new Date(startTime);
                     // alert(diff);
-                    // var current = new Date();
-                    var d = new Date();
-                    var local = d.getTime();
-                    var offset = d.getTimezoneOffset() * (60 * 1000);
+                    var current = new Date();
+                    // var d = new Date();
+                    // var local = d.getTime();
+                    // var offset = d.getTimezoneOffset() * (60 * 1000);
                     
-                    var utc = new Date(local + offset);
-                    var current = new Date(utc.getTime() + ( 2+60 * 60 * 1000));
+                    // var utc = new Date(local + offset);
+                    // var current = new Date(utc.getTime() + ( 2+60 * 60 * 1000));
                     // alert(current);
 
                     $(this).html(calculateTimeDifference(diff, current));
