@@ -33,7 +33,6 @@ class OrderController extends BaseController
         ]);
         $date_send = [
             'id' => $order->id,
-            
         ];
         $pusher->trigger('notifications', 'new-notification', $date_send);
        
@@ -42,8 +41,6 @@ class OrderController extends BaseController
 
         // return response()->json(['message' => 'Item added to cart']);
         return $this->sendResponse($res,'تم ارسال الطلب بنجاح');
-
-
     }
     public function all_data(){
         $res =[
@@ -67,6 +64,11 @@ class OrderController extends BaseController
             'close_message'=>get_general_value('close_message')
         ];
         return $this->sendResponse($res,'all response');
+    }
+    public function get_status($id){
+        $order = Order::where('code',$id)->first();
+        $res = $order->status;
+        return json_decode($res);
     }
 }
 
