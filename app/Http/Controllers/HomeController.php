@@ -17,9 +17,9 @@ class HomeController extends Controller
         if($request->status != null){
             $query->where('status',$request->status);
         }
-        if($request->table_type != null){
-            $query->where('table_type',$request->table_type);
-        }
+        // if($request->table_type != null){
+        //     $query->where('table_type',$request->table_type);
+        // }
         $orders = $query->orderby('id','desc')->get();
         $now =  time().'orders.xlsx';
         (new FastExcel($orders))->export($now, function ($order) {
@@ -30,7 +30,7 @@ class HomeController extends Controller
                 'note'=>$order->note,
                 'guest'=>$order->guest,
                 'status'=>get_status($order->status),
-                'table type'=>$order->table_type,
+                // 'table type'=>$order->table_type,
                 'created_at'=>$order->created_at
             ];
         });

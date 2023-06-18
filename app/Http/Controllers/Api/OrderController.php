@@ -21,8 +21,8 @@ class OrderController extends BaseController
         $order->guest = $request->guest;
         $order->phone = $request->phone;
         $order->note = $request->note;
-        $order->table_type = $request->table_type;
-        $order->place_type = $request->place_type;
+        // $order->table_type = $request->table_type;
+        // $order->place_type = $request->place_type;
         $order->status = 2;
         $order->save();
         $res = new OrderResource($order);

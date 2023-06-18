@@ -121,7 +121,7 @@
 
                                                             </select>
                                                         </div>
-                                                        <div class="form-group">
+                                                        {{-- <div class="form-group">
                                                             <label for="recipient-name" class="col-form-label">المكان
                                                             </label>
                                                             <select name="table_type" class="form-control"
@@ -133,7 +133,7 @@
 
                                                             </select>
 
-                                                        </div>
+                                                        </div> --}}
                                                         <button type="submit" class="btn btn-info">ارسال</button>
                                                     </form>
                                                 </div>
@@ -156,7 +156,7 @@
                                                 <th>بيانات المستخدم </th>
                                                 <th>الملاحظات </th>
                                                 <th width="100">الحالة</th>
-                                                <th>نوع الطاولة</th>
+                                                {{-- <th>نوع الطاولة</th> --}}
                                                 {{-- <th>Place Type</th> --}}
                                                 <th>الاشخاص</th>
                                                 <th>انشأت في </th>
