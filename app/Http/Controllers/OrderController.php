@@ -23,7 +23,10 @@ class OrderController extends Controller
 
                 $query->whereBetween('created_at', [$request->from . ' 00:00:00', $request->to. ' 23:59:59']);
             }
+        }else{
+            $query->where('is_clear',1);
         }
+        
         $orders =$query->orderby('id','desc')->get(); // Replace with your actual logic to fetch the updated content
 
         return view('dashboard.orders.index', compact('orders','request'))->render();
@@ -41,6 +44,8 @@ class OrderController extends Controller
             }elseif($request->from == $request->to){
                 $query->whereBetween('created_at', [$request->from . ' 00:00:00', $request->to. ' 23:59:59']);
             }
+        }else{
+            $query->where('is_clear',1);
         }
         $orders =$query->orderby('id','desc')->get(); // Replace with your actual logic to fetch the updated content
 
