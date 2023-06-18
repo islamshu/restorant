@@ -28,9 +28,9 @@
                     </select>
                     {{-- <button class="btn btn-{{get_button_status($item->status)  }}" selected>{{ get_status($item->status) }}</button>   --}}
                   </td>
-                  <td>
+                  {{-- <td>
                     {{ $item->table_type }}
-                  </td>
+                  </td> --}}
                   
                   <td>
                     {{ $item->guest }}
