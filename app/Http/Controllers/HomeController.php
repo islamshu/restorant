@@ -107,7 +107,7 @@ class HomeController extends Controller
                 $query->whereBetween('created_at', [$request->from . ' 00:00:00', $request->to. ' 23:59:59']);
             }
         }else{
-            $query->where('is_clear',1);
+            $query->where('is_clear',0);
         }
         
         $orders =$query->orderby('id','desc')->get();
