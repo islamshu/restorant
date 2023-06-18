@@ -21,7 +21,6 @@ use Illuminate\Support\Facades\Route;
 // Auth::routes();
 Route::get('login',[HomeController ::class,'login_admin'])->name('login');
 Route::get('/',[HomeController ::class,'index'])->name('index');
-Route::get('get_status/{id}',[App\Http\Controllers\OrderController::class, 'get_status'])->name('get_status');
 
 Route::post('login',[HomeController::class,'post_login_admin'])->name('post_login_admin');
 Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function () {

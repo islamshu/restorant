@@ -20,3 +20,4 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::post('/make_order',[OrderController::class,'make_order']);
 Route::get('/all_data',[OrderController::class,'all_data']);
+Route::get('get_status/{id}',[OrderController::class, 'get_status'])->name('get_status');
