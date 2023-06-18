@@ -13,9 +13,13 @@ class Kernel extends ConsoleKernel
      * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
      * @return void
      */
+    protected $commands = [
+        Commands\Dalityupdate::class,
+    ];
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('update:daily')
+        ->dailyAt('04:00');
     }
 
     /**
