@@ -15,8 +15,8 @@ function get_general_value($key)
 function if_is_open(){
 $current_time = now()->format('H:i:s'); // Get the current time
 
-$start_time = '16:00:00'; // Opening time
-$end_time = '01:30:00'; // Closing time
+$start_time = get_general_value('start_at'); // Opening time
+$end_time = get_general_value('end_at'); // Closing time
 
 if ($start_time <= $end_time) {
     // Case 1: The opening time is earlier than the closing time
