@@ -60,7 +60,7 @@ class OrderController extends BaseController
             'start_at'=>get_general_value('start_at'),
             'end_at'=>get_general_value('end_at'),
             'background_closed'=>asset('uploads/'.get_general_value('background_closed')),
-            'is_open'=>get_general_value('is_open'),
+            'is_open'=>if_is_open('is_open'),
             'close_message'=>get_general_value('close_message')
         ];
         return $this->sendResponse($res,'all response');
