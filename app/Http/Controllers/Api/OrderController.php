@@ -60,7 +60,7 @@ class OrderController extends BaseController
             'start_at'=>get_general_value('start_at'),
             'end_at'=>get_general_value('end_at'),
             'background_closed'=>asset('uploads/'.get_general_value('background_closed')),
-            'is_open'=>if_is_open('is_open'),
+            'is_open'=>get_general_value('is_open') == 1 ? if_is_open('is_open') : get_general_value('is_open'),
             'close_message'=>get_general_value('close_message'),
             'close_message_en'=>get_general_value('close_message_en')
 
