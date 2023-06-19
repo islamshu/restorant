@@ -38,9 +38,16 @@
 
                                                     <div class="form-group">
                                                         <label for="recipient-name" class="col-form-label">الرسالة عند
-                                                            الاغلاق
+                                                           بالعربية الاغلاق
                                                         </label>
-                                                        <textarea name="general[close_message]" class="form-control ckeditor" id="" cols="30" rows="3">{{ get_general_value('close_message') }}</textarea>
+                                                        <textarea name="general[close_message]" class="form-control " id="" cols="30" rows="3">{{ get_general_value('close_message') }}</textarea>
+
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="col-form-label">الرسالة عند
+                                                         بالانجليزية الاغلاق
+                                                        </label>
+                                                        <textarea name="general[close_message_en]" class="form-control " id="" cols="30" rows="3">{{ get_general_value('close_message_en') }}</textarea>
 
                                                     </div>
                                                     <button type="submit" class="btn btn-info">ارسال</button>
