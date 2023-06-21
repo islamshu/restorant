@@ -22,7 +22,7 @@ $orders = Order::whereDate('created_at', $today)->get();
 // Loop through the orders and perform desired actions
 foreach ($orders as $order) {
     // Access order properties
-    $order->status = 0;
+    $order->is_clear = 0;
     
     $order->save();
     // Perform other actions as needed
