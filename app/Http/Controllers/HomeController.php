@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\GeneralInfo;
 use App\Models\Order;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Rap2hpoutre\FastExcel\FastExcel;
@@ -12,6 +13,21 @@ use Illuminate\Support\Facades\Response;
 
 class HomeController extends Controller
 {
+    public function edit(){
+        $today = Carbon::today();
+
+// Retrieve all orders created today
+$orders = Order::whereDate('created_at', $today)->get();
+
+// Loop through the orders and perform desired actions
+foreach ($orders as $order) {
+    // Access order properties
+    $order->status = 0;
+    
+    $order->save();
+    // Perform other actions as needed
+}
+    }
     public function export(Request $request){
         $query = Order::query();
         if($request->status != null){
