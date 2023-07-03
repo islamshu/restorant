@@ -68,6 +68,7 @@ class OrderController extends BaseController
         return $this->sendResponse($res,'all response');
     }
     public function resend_request(Request $request){
+        dd($request);
         $order = Order::where('code',$request->order_id)->first();
         $order_new = new Order();
         $order_new->code  = date('Ymd-His').rand(10,99);
