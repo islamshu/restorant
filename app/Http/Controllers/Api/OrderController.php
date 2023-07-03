@@ -69,9 +69,8 @@ class OrderController extends BaseController
     }
     public function resend_request($order_id){
         $order = Order::where('code',$order_id)->first();
-        return($order);
         $orders = Order::orderby('id','desc')->first();
-        $order = $orders->id +1;
+        $order = $orders->id  + 1;
         $order->save();
         $res = new OrderResource($order);
         $user = User::first();
