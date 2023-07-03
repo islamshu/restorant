@@ -69,29 +69,21 @@ class OrderController extends BaseController
     }
     public function resend_request($order_id){
         $order = Order::where('code',$order_id)->first();
-        $order_new = new Order();
-        $order_new->code  = date('Ymd-His').rand(10,99);
-        $order_new->name = $order->name;
-        $order_new->guest = $order->guest;
-        $order_new->phone = $order->phone;
-        $order_new->note = $order->note;
-        // $order->table_type = $request->table_type;
-        // $order->place_type = $request->place_type;
-        $order_new->status = 2;
-        $order_new->save();
+        $orders = Order::orderby('id','desc')->first();
+        $order = $orders->id +1;
         $order->delete();
-        $res = new OrderResource($order_new);
+        $res = new OrderResource($order);
         $user = User::first();
         $pusher = new Pusher('ecfcb8c328a3a23a2978', '6f6d4e2b81650b704aba', '1534721', [
             'cluster' => 'ap2',
             'useTLS' => true
         ]);
         $date_send = [
-            'id' => $order_new->id,
+            'id' => $order->id,
         ];
         $pusher->trigger('notifications', 'new-notification', $date_send);
        
-        $notification = new OrderAdded($order_new);
+        $notification = new OrderAdded($order);
         Notification::send($user, $notification);
         return response()->json(['status' => 'success']);
 
