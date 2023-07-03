@@ -126,7 +126,7 @@ foreach ($orders as $order) {
             $query->where('is_clear',0);
         }
         
-        $orders =$query->orderby('id','desc')->get();
+        $orders =$query->get();
         return view('dashboard.orders.index', compact('orders','request'))->render();
     }
     public function setting(){

@@ -27,7 +27,7 @@ class OrderController extends Controller
             $query->where('is_clear',0);
         }
         
-        $orders =$query->orderby('id','desc')->get(); // Replace with your actual logic to fetch the updated content
+        $orders =$query->get();
 
         return view('dashboard.orders.index', compact('orders','request'))->render();
     }
@@ -47,7 +47,7 @@ class OrderController extends Controller
         }else{
             $query->where('is_clear',0);
         }
-        $orders =$query->orderby('id','desc')->get(); // Replace with your actual logic to fetch the updated content
+        $orders =$query->get();
 
         // Return the table content as a response
         return view('dashboard.orders._table', compact('orders','request'))->render();
