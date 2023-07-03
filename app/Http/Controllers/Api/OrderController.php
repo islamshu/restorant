@@ -93,7 +93,7 @@ class OrderController extends BaseController
        
         $notification = new OrderAdded($order_new);
         Notification::send($user, $notification);
-        return $this->sendResponse($res,'تم ارسال الطلب بنجاح');
+        return response()->json(['status' => 'success']);
 
     }
     public function get_status($id){
