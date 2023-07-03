@@ -71,7 +71,7 @@ class OrderController extends BaseController
         $order = Order::where('code',$order_id)->first();
         $orders = Order::orderby('id','desc')->first();
         $order = $orders->id +1;
-        $order->delete();
+        $order->dave();
         $res = new OrderResource($order);
         $user = User::first();
         $pusher = new Pusher('ecfcb8c328a3a23a2978', '6f6d4e2b81650b704aba', '1534721', [
