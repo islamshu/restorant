@@ -70,7 +70,7 @@ class OrderController extends BaseController
     public function get_status($id){
         $order = Order::where('code',$id)->first();
         $res = $order->status;
-        $queue = Order::where('id', '<', $id)->where('status',2)->count();
+        $queue = Order::where('id', '<', $id)->where('status',2)->orderby('id','desc')->count();
         return response()->json(['status' => $order->status ,'number_queue'=>$queue,'user_name'=>$order->name]);
     }
 }
