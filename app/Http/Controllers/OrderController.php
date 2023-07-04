@@ -26,8 +26,11 @@ class OrderController extends Controller
         }else{
             $query->where('is_clear',0);
         }
-        
-        $orders =$query->get();
+        if($request->status != 2){
+            $orders =$query->orderby('id','desc')->get();
+        }else{
+            $orders =$query->get();
+        }
 
         return view('dashboard.orders.index', compact('orders','request'))->render();
     }
@@ -47,8 +50,11 @@ class OrderController extends Controller
         }else{
             $query->where('is_clear',0);
         }
-        $orders =$query->get();
-
+        if($request->status != 2){
+            $orders =$query->orderby('id','desc')->get();
+        }else{
+            $orders =$query->get();
+        }
         // Return the table content as a response
         return view('dashboard.orders._table', compact('orders','request'))->render();
     }
