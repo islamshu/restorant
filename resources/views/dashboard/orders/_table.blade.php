@@ -6,6 +6,8 @@
                 <td>
                   @if($item->created_at == $item->updated_at)
                   <span class="timeHandlerLoading" data-time-start="{{ $item->created_at }}"></span>
+                  @elseif($item->created_at != $item->updated_at && $item->status == 2 )
+                  <span class="timeHandlerLoading" data-time-start="{{ $item->updated_at }}"></span>
                   @else
                   <span class="timeHandlerClosed" data-time-start="{{ $item->created_at }}" data-time-end="{{ $item->updated_at }}"></span>
                   @endif
