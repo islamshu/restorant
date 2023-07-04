@@ -69,8 +69,13 @@ class OrderController extends BaseController
     }
     public function resend_request($order_id){
         $order = Order::where('code',$order_id)->first();
-        $orders = Order::orderby('id','desc')->first();
-        $order = $orders->id  + 1;
+        // $order = Order::findOrFail($orderId);
+
+        // Get the last order ID from the database
+        $lastOrderId = Order::orderByDesc('id')->value('id');
+
+        // Update the ID of the order to be the last order ID + 1
+        $order->id = $lastOrderId + 1;
         $order->save();
         $res = new OrderResource($order);
         $user = User::first();
