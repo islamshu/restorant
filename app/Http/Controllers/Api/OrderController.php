@@ -60,9 +60,14 @@ class OrderController extends BaseController
             'start_at'=>get_general_value('start_at'),
             'end_at'=>get_general_value('end_at'),
             'background_closed'=>asset('uploads/'.get_general_value('background_closed')),
-            'is_open'=>get_general_value('is_open') == 1 ? if_is_open('is_open') : get_general_value('is_open'),
+            'is_open'=> if_is_open('is_open') ,
             'close_message'=>get_general_value('close_message'),
-            'close_message_en'=>get_general_value('close_message_en')
+            'close_message_en'=>get_general_value('close_message_en'),
+            'max_order'=>get_general_value('max_order'),
+            'close_max_message'=>get_general_value('close_max_message'),
+            'manual_close_message'=>get_general_value('manual_close_message'),
+            'is_manual_close'=>get_general_value('is_manual_close'),
+            'now_queue'=>Order::where('status',2)->count(),
 
         ];
         return $this->sendResponse($res,'all response');

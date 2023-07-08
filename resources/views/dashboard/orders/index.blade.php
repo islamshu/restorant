@@ -57,8 +57,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="checkbox" data-id="{{ get_general_value('is_open') }}"class="js-switch"
-                                    {{ get_general_value('is_open') == 1 ? 'checked' : '' }}>
+                                <input type="checkbox" data-id="{{ get_general_value('is_manual_close') }}"class="js-switch"
+                                    {{ get_general_value('is_manual_close') == 1 ? 'checked' : '' }}>
 
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
@@ -337,7 +337,7 @@
                 url: '{{ route('add_general') }}',
                 data: {
                     "_token": "{{ csrf_token() }}",
-                    'general[is_open]': status,
+                    'general[is_manual_close]': status,
                 },
                 success: function(data) {
                     console.log(data.message);

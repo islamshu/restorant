@@ -122,6 +122,23 @@
                                                 <input type="time" name="general[end_at]" value="{{ get_general_value('end_at') }}" class="form-control"  >
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label> العدد الاقصى بالطابور         </label>
+                                                <input type="number" name="general[max_order]" value="{{ get_general_value('max_order') }}" class="form-control"  >
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label> الرسالة عند الوصول الى اقصى عدد           </label>
+                                                <textarea name="general[close_max_message]" class="form-control " id="" cols="30" rows="3">{{ get_general_value('close_max_message') }}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                          
+                                            <div class="col-md-6">
+                                                <label> الرسالة عند الاغلاق اليدوي              </label>
+                                                <textarea name="general[manual_close_message]" class="form-control " id="" cols="30" rows="3">{{ get_general_value('manual_close_message') }}</textarea>
+                                            </div>
+                                        </div>
                                        
                                       
                                        
