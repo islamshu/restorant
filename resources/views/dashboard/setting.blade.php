@@ -140,12 +140,12 @@
                                         <div class="row">
                                           
                                             <div class="col-md-6">
-                                                <label> الرسالة بالعربية عند الاغلاق اليدوي              </label>
+                                                <label> الرسالة بالعربية عند الاغلاق               </label>
                                                 <textarea name="general[manual_close_message]" class="form-control " id="" cols="30" rows="3">{{ get_general_value('manual_close_message') }}</textarea>
                                             </div>
                                              
                                             <div class="col-md-6">
-                                                <label> الرسالة بالانجليزية عند الاغلاق اليدوي              </label>
+                                                <label> الرسالة بالانجليزية عند الاغلاق               </label>
                                                 <textarea name="general[manual_close_message_en]" class="form-control " id="" cols="30" rows="3">{{ get_general_value('manual_close_message_en') }}</textarea>
                                             </div>
                                         </div>
