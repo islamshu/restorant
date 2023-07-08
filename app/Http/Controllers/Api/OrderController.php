@@ -65,6 +65,8 @@ class OrderController extends BaseController
             'close_message_en'=>get_general_value('close_message_en'),
             'max_order'=>get_general_value('max_order'),
             'close_max_message'=>get_general_value('close_max_message'),
+            'close_max_message_en'=>get_general_value('close_max_message_en'),
+            'manual_close_message_en'=>get_general_value('manual_close_message_en'),
             'manual_close_message'=>get_general_value('manual_close_message'),
             'is_manual_close'=>get_general_value('is_manual_close'),
             'now_queue'=>Order::where('status',2)->count(),
