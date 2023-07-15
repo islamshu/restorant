@@ -10,6 +10,7 @@ use App\Models\Order;
 use App\Models\TimeRestorant;
 use App\Models\User;
 use App\Notifications\OrderAdded;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Notification;
 use Pusher\Pusher;
 
@@ -71,8 +72,8 @@ class OrderController extends BaseController
             'manual_close_message'=>get_general_value('manual_close_message'),
             'is_manual_close'=>get_general_value('is_manual_close'),
             'now_queue'=>Order::where('status',2)->count(),
-            'start_at_new'=>TimeRestorant::first()->start_at,
-            'end_at_new'=>TimeRestorant::first()->end_at,
+            'start_at_new'=>Carbon::createFromFormat('H:i:s', TimeRestorant::first()->start_at)->format('h:i A'),
+            'end_at_new'=>Carbon::createFromFormat('H:i:s', TimeRestorant::first()->end_at)->format('h:i A'),
 
 
         ];
