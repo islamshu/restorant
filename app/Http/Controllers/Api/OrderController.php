@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
 use App\Http\Resources\OrderResource;
 use App\Models\Order;
+use App\Models\TimeRestorant;
 use App\Models\User;
 use App\Notifications\OrderAdded;
 use Illuminate\Support\Facades\Notification;
@@ -70,6 +71,9 @@ class OrderController extends BaseController
             'manual_close_message'=>get_general_value('manual_close_message'),
             'is_manual_close'=>get_general_value('is_manual_close'),
             'now_queue'=>Order::where('status',2)->count(),
+            'start_at_new'=>TimeRestorant::first()->start_at,
+            'end_at_new'=>TimeRestorant::first()->end_at,
+
 
         ];
         return $this->sendResponse($res,'all response');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\GeneralInfo;
 use App\Models\Order;
+use App\Models\TimeRestorant;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -134,6 +135,7 @@ foreach ($orders as $order) {
     }
     public function add_general(Request $request)
     {
+        // dd($request);
         if ($request->hasFile('general_file')) {
             foreach ($request->file('general_file') as $name => $value) {
                 if ($value == null) {
@@ -148,6 +150,16 @@ foreach ($orders as $order) {
                     continue;
                 }
                 GeneralInfo::setValue($name, $value);
+                if($name == 'start_at' ){
+                    $time = TimeRestorant::first();
+                    $time->start_at = $value;
+                    $time->save();
+                }
+                if($name == 'end_at' ){
+                    $time = TimeRestorant::first();
+                    $time->end_at = $value;
+                    $time->save();
+                }
             }
         }
         return redirect()->back()->with(['success' => 'تم تعديل البيانات بنجاح']);
