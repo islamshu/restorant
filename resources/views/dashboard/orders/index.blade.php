@@ -344,7 +344,7 @@
                 }
             });
             if (status == 0) {
-                $('#examplelock').modal('show');
+                // $('#examplelock').modal('show');
 
             }
         });
