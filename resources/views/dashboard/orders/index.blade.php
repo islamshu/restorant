@@ -78,7 +78,7 @@
                                     @include('dashboard.parts._error')
                                     @include('dashboard.parts._success')
                                     <div style="text-align: center">
-                                        <img width="100" height="100" src={{ asset('backend/watitng-list.png') }}>
+                                        <img width="100" height="100" src={{ asset('backend/watitng-list_new.png') }}>
                                     </div>
                                     {{-- <a class="btn btn-success" href="{{ route('booking.create') }}">اضف حجز جديد</a> --}}
                                     <br>
