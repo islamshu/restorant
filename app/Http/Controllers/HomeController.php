@@ -14,6 +14,13 @@ use Illuminate\Support\Facades\Response;
 
 class HomeController extends Controller
 {
+    public function check_password(Request $request){
+        if($request->enteredPassword == get_general_value('setting_password')){
+            return view('dashboard._setting');
+        }else{
+            return response()->json(['status' =>'error','message'=>'كلمة المرور خاطئة']);
+        }
+    }
     public function edit(){
         $today = Carbon::today();
 
