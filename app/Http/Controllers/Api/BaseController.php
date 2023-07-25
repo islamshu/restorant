@@ -22,4 +22,10 @@ class BaseController extends Controller
             $response['data'] = $errorMessages;
         return response()->json($response , $code);
     }
+    public function sendErrorTest($error , $errorMessages = [] , $code = 200){
+        $response = ['success' => 'error', 'message' => $error,'code'=>400];
+        if (!empty($errorMessages))
+            $response['data'] = $errorMessages;
+        return response()->json($response , $code);
+    }
 }

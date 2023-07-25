@@ -20,7 +20,7 @@ class OrderController extends BaseController
         $checkOrder = Order::where('phone',$request->phone)->where('status',2)->first();
         if($checkOrder){
             $queue = Order::where('status',2)->where('id', '<', $checkOrder->id)->count();
-            return $this->errorResponse("يوجد لديك حجز حالي على الدور ورقمه  ".$queue);
+            return $this->sendErrorTest("يوجد لديك حجز حالي على الدور ورقمه  ".$queue);
         }
         $order = new Order();
         $order->code  = date('Ymd-His').rand(10,99);
