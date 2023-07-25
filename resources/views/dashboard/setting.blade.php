@@ -60,7 +60,11 @@
                 },
                 success: function(response) {
                    if(response.status == 'error'){
-                    alert(response.message);
+                    swal({
+                    title: response.message,
+                    icon: "error",
+                 
+                });
                    }else{
                     $('#password-form').hide();
                     $('#dashboard-content').append(response);
