@@ -17,6 +17,11 @@ use Pusher\Pusher;
 class OrderController extends BaseController
 {
     public function make_order(Request $request){
+        $checkOrder = Order::where('phone',$request->phone)->where('status',2)->first();
+        if($checkOrder){
+            $queue = Order::where('status',2)->where('id', '<', $checkOrder->id)->count();
+            return $this->errorResponse("يوجد لديك حجز حالي على الدور ورقمه  ".$queue);
+        }
         $order = new Order();
         $order->code  = date('Ymd-His').rand(10,99);
         $order->name = $request->name;
@@ -111,5 +116,6 @@ class OrderController extends BaseController
         $queue = Order::where('status',2)->where('id', '<', $order->id)->count();
         return response()->json(['status' => $order->status ,'number_queue'=>$queue,'user_name'=>$order->name]);
     }
+    
 }
 
