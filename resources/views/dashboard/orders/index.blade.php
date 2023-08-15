@@ -60,6 +60,12 @@
                                 <input type="checkbox" data-id="{{ get_general_value('is_manual_close') }}"class="js-switch"
                                     {{ get_general_value('is_manual_close') == 1 ? 'checked' : '' }}>
 
+                                    <div style="text-align: center;margin-top:-30px">
+                                        <h2 style="color:red">اغلاق طواريء</h2> 
+                                         <input type="checkbox" data-id="{{ get_general_value('is_emergency_close') }}"class="switch2 "
+                                         {{ get_general_value('is_emergency_close') == 1 ? 'checked' : '' }}>
+     
+                                     </div>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
@@ -77,7 +83,10 @@
 
                                     @include('dashboard.parts._error')
                                     @include('dashboard.parts._success')
-                                    <div style="text-align: center">
+                                   
+
+                                    <div style="text-align: center;">
+    
                                         <img width="100" height="100" src={{ asset('backend/watitng-list_new.png') }}>
                                     </div>
                                     {{-- <a class="btn btn-success" href="{{ route('booking.create') }}">اضف حجز جديد</a> --}}
@@ -348,6 +357,26 @@
 
             }
         });
+        $(".switch2").change(function() {
+            let status = $(this).prop('checked') === true ? 1 : 0;
+            $.ajax({
+                type: "post",
+                dataType: "json",
+                url: '{{ route('add_general') }}',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    'general[is_emergency_close]': status,
+                },
+                success: function(data) {
+                    console.log(data.message);
+                }
+            });
+            if (status == 0) {
+                // $('#examplelock').modal('show');
+
+            }
+        });
+        
     </script>
     <script>
         // Initialize Pusher

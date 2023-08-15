@@ -145,6 +145,23 @@
 
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="recipient-name" class="col-form-label">
+   الرسالة عند اغلاق الطواريء  بالعربية
+                    </label>
+                    <textarea name="general[emergency_close_message]" class="form-control " id="" cols="30" rows="3">{{ get_general_value('emergency_close_message') }}</textarea>
+
+                </div>
+                <div class="col-md-6">
+                    <label for="recipient-name" class="col-form-label">
+                     الرسالة عند اغلاق الطواريء بالانجليزية
+                    </label>
+                    <textarea name="general[emergency_close_message_en]" class="form-control " id="" cols="30" rows="3">{{ get_general_value('emergency_close_message_en') }}</textarea>
+
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-6">
                     <label for="recipient-name" class="col-form-label">

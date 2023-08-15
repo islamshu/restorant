@@ -195,6 +195,16 @@
                 size: 'small'
             });
         });
+        let elemse = Array.prototype.slice.call(document.querySelectorAll('.switch2'));
+
+        elemse.forEach(function(html) {
+    let switchery = new Switchery(html, {
+        size: 'small',
+        secondaryColor:'orange',
+        color: 'red' // Set the color to red
+    });
+});
+
         $(".image").change(function() {
 
             if (this.files && this.files[0]) {
